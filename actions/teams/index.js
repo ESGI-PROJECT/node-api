@@ -4,14 +4,14 @@ module.exports = (server) => {
   return {
       list,
       show,
-      addUser,
-      removeUser,
-      unsubscribe,
+      // addUser,
+      // removeUser,
+      // unsubscribe,
   };
 
   function list(req, res, next) {
     Team.find()
-        .then(setCache)
+        // .then(setCache)
         .then(res.commit)
         .catch(res.error);
   }
@@ -24,5 +24,5 @@ module.exports = (server) => {
           .catch(res.error);
   }
 
-  
+
 };

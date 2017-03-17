@@ -4,6 +4,10 @@ module.exports = (server) => {
     let router = new Router();
 
     router.post('/',
+        // verifier le token
+        server.middlewares.ensureAuthenticated,
+        // body parser to get content
+        server.middlewares.bodyParser.json(),
         server.actions.projects.create
         // server.middlewares.ensureAuthenticated,
         // server.middlewares.ensureRights('Tasks.create'),
