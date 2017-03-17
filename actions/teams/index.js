@@ -30,7 +30,7 @@ module.exports = (server) => {
 
     Team.findById(req.team.id)
         .then(server.utils.ensureOne)
-        .catch(server.utils.reject(404, 'Team.not.found'));
+        .catch(server.utils.reject(404, 'Team.not.found'))
         .then(addUserToTeam)
         .then(res.commit)
         .catch(res.error);
@@ -38,7 +38,7 @@ module.exports = (server) => {
     function addUserToTeam (data) {
       User.findById(req.user.id)
           .then(server.utils.ensureOne)
-          .catch(server.utils.reject(404, 'User.not.found'));
+          .catch(server.utils.reject(404, 'User.not.found'))
           .then(addToTeam)
           .then(returnTeam)
 

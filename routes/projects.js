@@ -6,6 +6,7 @@ module.exports = (server) => {
     router.post('/',
         // verifier le token
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureRights('projects.create'),
         // body parser to get content
         server.middlewares.bodyParser.json(),
         server.actions.projects.create
