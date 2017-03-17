@@ -21,7 +21,7 @@ module.exports = (server) => {
         tasks: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Todo'
+                ref: 'Task'
             }
         ],
 
