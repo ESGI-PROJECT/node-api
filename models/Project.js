@@ -4,18 +4,8 @@ module.exports = (server) => {
   const Project = new Schema({
     title: String,
     team: {
-      owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-      },
-      member: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-      },
-      admin: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-      },
+      type: Schema.Types.ObjectId,
+      ref: 'Team',
     },
     tasks: {
       type: Schema.Types.ObjectId,
