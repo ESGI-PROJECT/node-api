@@ -26,10 +26,12 @@ module.exports = (server) => {
 
     router.get('/:id',
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureRights("projects.get"),
         server.actions.projects.show);
 
     router.put('/:id',
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureRights("projects.update"),
         server.middlewares.bodyParser.json(),
         server.actions.projects.update);
 

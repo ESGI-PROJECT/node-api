@@ -4,9 +4,14 @@ module.exports = (server) => {
     let router = new Router();
 
     router.get('/',
-        server.actions.teams.list);
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureRights("teams.list"),
+        server.actions.teams.list
+    );
 
     router.get('/:id',
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureRights("teams.get"),
         server.actions.teams.show);
 
     router.put('/:teamId/add',

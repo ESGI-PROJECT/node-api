@@ -8,24 +8,38 @@ module.exports = (server) => {
         show,
         update,
         remove,
-        // assign: require('./assign')(server)
     };
 
     function create(req, res, next) {
         let project = null;
 
-        return Project.findById(req.project.id)
-            .then(server.utils.ensureOne)
-            .catch(server.utils.reject(403, 'invalid.project'))
-            .then(createTask)
-            // .then(setCreatorAndAssign)
-            .then(persist)
-            .then(res.commit)
-            .catch(res.error);
+        return Project.findById(req.params.id)
+          .then(server.utils.ensureOne)
+          .catch(server.utils.reject(403, 'invalid.project'))
+          .then(createTask)
+          .then(addTaskToProject)
+          .then(res.commit)
+          .catch(console.log(res.error));
 
         function createTask(data) {
-            uproject = data;
-            return new Task(req.body);
+          project = data;
+          console.log(project);
+          return new Task(req.body);
+        }
+
+        function addTaskToProject(task) {
+          return task.save()
+            .then(addToProject)
+            .then(getTask);
+
+            function addToProject(task) {
+              project.tasks.push(task._id);
+              project.save();
+            }
+
+            function getTask() {
+              return task;
+            }
         }
 
         // function setCreatorAndAssign(Task) {
@@ -34,20 +48,20 @@ module.exports = (server) => {
         //     return Task;
         // }
 
-        function persist(Task) {
-            return Task.save()
-                .then(addToProject)
-                .then(returnTask);
-
-            function addToProject(Task) {
-                project.tasks.push(Task._id);
-                project.save()
-            }
-
-            function returnTask() {
-                return Task;
-            }
-        }
+        // function persist(Task) {
+        //     return Task.save()
+        //         .then(addToProject)
+        //         .then(returnTask);
+        //
+        //     function addToProject(Task) {
+        //         project.tasks.push(Task._id);
+        //         project.save()
+        //     }
+        //
+        //     function returnTask() {
+        //         return Task;
+        //     }
+        // }
     }
 
     function list(req, res, next) {
