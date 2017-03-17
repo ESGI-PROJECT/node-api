@@ -62,19 +62,23 @@
             },
             "teams.update" : {
                 "level": 1,
-                "belongs": true
+                "belongs": true,
+                "entity": "team" 
             },
             "teams.add" : {
                 "level": 1,
-                "belongs": true 
+                "belongs": true,
+                "entity": "team" 
             },
             "teams.remove" : {
                 "level": 1,
-                "belongs": true 
+                "belongs": true,
+                "entity": "team"  
             },
             "teams.unsubscribe" : {
                 "level": 3,
-                "belongs": true 
+                "belongs": true,
+                "entity": "team"  
             } 
         }
     }
