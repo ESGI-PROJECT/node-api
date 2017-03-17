@@ -1,7 +1,7 @@
 module.exports = (server) => {
   const Schema = server.mongoose.Schema;
 
-  const Project = new Schema({
+  const ProjectSchema = new Schema({
     title: String,
     team: {
       type: Schema.Types.ObjectId,
@@ -12,4 +12,6 @@ module.exports = (server) => {
       ref: 'Task',
     },
   });
+
+  return server.mongoose.model('Project', ProjectSchema);
 }
