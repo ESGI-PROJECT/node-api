@@ -24,15 +24,15 @@ module.exports = (server) => {
       server.actions.projects.list
     );
 
-    // router.get('/:id',
-    //     server.middlewares.ensureAuthenticated,
-    //     server.actions.Tasks.show);
-    //
-    // router.put('/',
-    //     server.middlewares.ensureAuthenticated,
-    //     server.middlewares.bodyParser.json(),
-    //     server.actions.Tasks.update);
-    //
+    router.get('/:id',
+        server.middlewares.ensureAuthenticated,
+        server.actions.projects.show);
+
+    router.put('/:id',
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.bodyParser.json(),
+        server.actions.projects.update);
+
     router.delete('/:id',
         server.middlewares.ensureAuthenticated,
         server.middlewares.ensureRights("projects.remove"),
