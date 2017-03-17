@@ -18,10 +18,11 @@ module.exports = (server) => {
         // server.actions.Tasks.create
     );
 
-    // router.get('/',
-    //     // server.middlewares.cache.get,
-    //     server.actions.Tasks.list);
-    //
+    router.get('/',
+      server.middlewares.ensureAuthenticated,
+      server.actions.projects.list
+    );
+
     // router.get('/:id',
     //     server.middlewares.ensureAuthenticated,
     //     server.actions.Tasks.show);
@@ -31,10 +32,10 @@ module.exports = (server) => {
     //     server.middlewares.bodyParser.json(),
     //     server.actions.Tasks.update);
     //
-    // router.delete('/:id',
-    //     server.middlewares.ensureAuthenticated,
-    //     server.actions.Tasks.remove);
-    //
+    router.delete('/:id',
+        server.middlewares.ensureAuthenticated,
+        server.actions.projects.remove);
+
     // router.put('/:id/assign/:assignedId',
     //     server.middlewares.ensureAuthenticated,
     //     server.middlewares.ensureRights('Tasks.assign'),
