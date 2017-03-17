@@ -32,9 +32,20 @@
                 "level": 3,
                 "belongs": false 
             },
+            "projects.get" : {
+                "level": 3,
+                "belongs": true,
+                "entity": "project"
+            },
+            "projects.update" : {
+                "level": 2,
+                "belongs": true,
+                "entity": "project"
+            },
             "projects.remove" : {
                 "level": 1,
-                "belongs": false 
+                "belongs": true,
+                "entity": "project" 
             },
             "task.list" : {
                 "level": 3,
