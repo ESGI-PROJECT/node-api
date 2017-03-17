@@ -4,6 +4,7 @@ module.exports = (server) => {
     let router = new Router();
 
     router.post('/',
+        server.actions.projects.create
         // server.middlewares.ensureAuthenticated,
         // server.middlewares.ensureRights('Tasks.create'),
         // server.middlewares.bodyParser.json(),

@@ -5,11 +5,11 @@ module.exports = (server) => {
 
     router.post('/',
         server.middlewares.ensureAuthenticated,
-        server.middlewares.ensureRights('Tasks.create'),
+        // server.middlewares.ensureRights('Tasks.create'),
         server.middlewares.bodyParser.json(),
-        server.middlewares.ensureFields('title'),
+        server.middlewares.ensureFields('title')
         // server.middlewares.cache.clean('Tasks'),
-        server.actions.Tasks.create
+        // server.actions.Tasks.create
     );
 
     router.get('/',
@@ -31,7 +31,7 @@ module.exports = (server) => {
 
     router.put('/:id/assign/:assignedId',
         server.middlewares.ensureAuthenticated,
-        server.middlewares.ensureRights('Tasks.assign'),
+        // server.middlewares.ensureRights('Tasks.assign'),
         server.actions.Tasks.assign);
 
     return router;
