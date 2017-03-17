@@ -72,7 +72,7 @@ module.exports = (server) => {
         .catch(server.utils.reject(404, 'User.not.found'))
         .then(isInTeam)
         .then(server.utils.ensureOne)
-        .catch(server.utils.reject(404, 'User.already.in.team'))
+        .catch(server.utils.reject(404, 'User.not.in.team'))
         .then(removeUserToTeam)
         .then(res.commit)
         .catch(res.error);

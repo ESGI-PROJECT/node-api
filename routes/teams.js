@@ -4,13 +4,13 @@ module.exports = (server) => {
     let router = new Router();
 
     router.get('/',
-        // server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureAuthenticated,
         // server.middlewares.ensureRights("teams.list"),
         server.actions.teams.list
     );
 
     router.get('/:id',
-        //server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureAuthenticated,
         //server.middlewares.ensureRights("teams.get"),
         server.actions.teams.show);
 
