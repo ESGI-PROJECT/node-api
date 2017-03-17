@@ -1,7 +1,7 @@
 module.exports = (server) => {
     return (action) => {
         const restrictions = server.settings.acl.actions;
-        const requiredAccessLevel = restrictions[action];
+        const requiredAccessLevel = restrictions[action].level;
 
         return (req, res, next) => {
             let userAccessLevel = req.user.accessLevel;
