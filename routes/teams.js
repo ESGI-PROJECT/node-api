@@ -13,7 +13,7 @@ module.exports = (server) => {
         server.middlewares.bodyParser.json(),
         server.actions.teams.addUser);
 
-    router.put('/remove',
+    router.put('/:teamId/remove',
         server.middlewares.bodyParser.json(),
         server.actions.teams.removeUser);
 
