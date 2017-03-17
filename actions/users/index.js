@@ -26,7 +26,7 @@ module.exports = (server) => {
 
         function createUser() {
             user.password = sha1(user.password);
-            Role.findOne({name: 'lambda'})
+            Role.findOne({name: 'member'})
                 .then(setRole);
 
             function setRole(role) {

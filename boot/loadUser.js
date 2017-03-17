@@ -21,10 +21,11 @@ module.exports = (server) => {
 
 
         function setRole(user){
-            Role.findOne({name: 'admin'})
+            Role.findOne({name: 'member'})
                 .then(set);
 
             function set(role){
+                console.log(role);
                 user.role = role._id.toString();
                 return user.save();
             }
