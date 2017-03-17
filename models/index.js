@@ -8,5 +8,6 @@ module.exports = (server) => {
         User: require('./User')(server),
         Todo: require('./Todo')(server),
         Role: require('./Role')(server)
+        Role: require('./Team')(server)
     }
 };
