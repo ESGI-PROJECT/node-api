@@ -21,7 +21,6 @@ module.exports = (server) => {
 
     return Promise.all(promises)
         .then((roles)=> {
-            console.log('done.');
             return roles;
         })
 };
