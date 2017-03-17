@@ -98,9 +98,12 @@ module.exports = (server) => {
     }
 
     function remove(req, res, next) {
-        Task.findByIdAndRemove(req.params.id)
+        Project.findById(req.params.id)
             .then(server.utils.ensureOne)
             .catch(server.utils.reject(404, 'Task.not.found'))
+            .then(server.utils.empty)
+            .then(Task.findByIdAndRemove(req.body))
+            .then(server.utils.ensureOne)
             .then(server.utils.empty)
             .then(res.commit)
             .catch(res.error);
