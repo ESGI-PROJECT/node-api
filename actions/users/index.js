@@ -70,5 +70,3 @@ module.exports = (server) => {
             .catch(res.error);
     }
 };
-
-
