@@ -9,16 +9,16 @@ module.exports = (server) => {
     router.get('/:id',
         server.actions.teams.show);
 
-    // router.put('/add',
-    //     server.middlewares.bodyParser.json(),
-    //     server.actions.teams.addUser);
-    //
-    // router.put('/remove',
-    //     server.middlewares.bodyParser.json(),
-    //     server.actions.teams.removeUser);
-    //
-    // router.get('/unsubscribe',
-    //     server.actions.teams.unsubscribe);
+    router.put('/:teamId/add',
+        server.middlewares.bodyParser.json(),
+        server.actions.teams.addUser);
+
+    router.put('/remove',
+        server.middlewares.bodyParser.json(),
+        server.actions.teams.removeUser);
+
+    router.get('/unsubscribe',
+        server.actions.teams.unsubscribe);
 
     return router;
 };
