@@ -34,7 +34,7 @@ module.exports = (server) => {
 
     // create team
     function createTeam(user) {
-      const users = [user, "owner"];
+      const users = [user];
       return new Team({ users })
         .save();
     }

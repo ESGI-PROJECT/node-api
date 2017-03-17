@@ -51,6 +51,15 @@
                 "level": 3,
                 "belongs": true 
             },
+            "teams.list" : {
+                "level": 3,
+                "belongs": false 
+            },
+            "teams.get" : {
+                "level": 3,
+                "belongs": true,
+                "entity": "team" 
+            },
             "teams.update" : {
                 "level": 1,
                 "belongs": true
