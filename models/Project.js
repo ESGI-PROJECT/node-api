@@ -7,10 +7,10 @@ module.exports = (server) => {
       type: Schema.Types.ObjectId,
       ref: 'Team',
     },
-    tasks: {
+    tasks: [{
       type: Schema.Types.ObjectId,
       ref: 'Task',
-    },
+    }],
   });
 
   return server.mongoose.model('Project', ProjectSchema);
