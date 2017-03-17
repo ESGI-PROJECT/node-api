@@ -10,7 +10,7 @@ module.exports = (server) => {
     },
     users: [
       {
-        type: Schema.Users.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User'
       }
     ]
