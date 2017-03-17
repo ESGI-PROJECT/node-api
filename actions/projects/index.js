@@ -8,8 +8,14 @@ module.exports = (server) => {
     create,
     list,
     remove,
+    show,
+    update,
   };
-
+  /*
+  *
+  * CREATE
+  *
+  */
   function create(req, res, next) {
     let task = null;
     // retrieve user id
@@ -41,14 +47,25 @@ module.exports = (server) => {
     }
   }
 
+  /*
+  *
+  *
+  * LIST
+  */
+
   function list(req, res, next) {
     Project.find()
       .then(res.commit)
       .catch(console.log(res.error));
   }
 
+  /*
+  *
+  * REMOVE
+  *
+  */
   function remove(req, res, next) {
-    Project.findByIdAndRemove(req.params.id)
+    return Project.findByIdAndRemove(req.params.id)
       .then(server.utils.ensureOne)
       .then(removeTeam)
       .catch(server.utils.reject(404, 'project not find'))
@@ -61,5 +78,34 @@ module.exports = (server) => {
         .then(server.utils.empty)
         .catch(res.error);
     }
+  }
+
+  /*
+  *
+  * SHOW
+  *
+  */
+
+  function show(req, res, next) {
+      Project.findById(req.params.id)
+          .then(server.utils.ensureOne)
+          .catch(server.utils.reject(404, 'Project.not.found'))
+          .then(res.commit)
+          .catch(res.error);
+  }
+
+  /*
+  *
+  * UPDATE
+  *
+  */
+
+  function update(req, res, next) {
+    Project.findByIdAndUpdate(req.params.id, req.body)
+        .then(server.utils.ensureOne)
+        .catch(server.utils.reject(404, 'Project.not.found'))
+        .then(server.utils.empty)
+        .then(res.commit)
+        .catch(console.log(res.error));
   }
 }
