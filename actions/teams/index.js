@@ -20,6 +20,7 @@ module.exports = (server) => {
 
   function show(req, res, next) {
       Team.findById(req.params.id)
+          .populate('users')
           .then(server.utils.ensureOne)
           .catch(server.utils.reject(404, 'Team.not.found'))
           .then(res.commit)
