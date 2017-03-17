@@ -8,6 +8,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "jsonwebtoken": "^7.3.0",
+    "lodash": "^4.17.4",
     "mongoose": "^4.8.7",
     "mongoose-timestamps": "0.0.1",
     "mongoose-ttl": "0.0.3",
