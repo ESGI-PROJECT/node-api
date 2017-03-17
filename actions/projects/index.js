@@ -28,7 +28,7 @@ module.exports = (server) => {
 
     // create team
     function createTeam(user) {
-      const users = [user];
+      const users = [user, "owner"];
       return new Team({ users })
         .save();
     }
@@ -50,11 +50,30 @@ module.exports = (server) => {
   function remove(req, res, next) {
     Project.findByIdAndRemove(req.params.id)
       .then(server.utils.ensureOne)
+      //.then(checkBelonging)
       .then(removeTeam)
       .catch(server.utils.reject(404, 'project not find'))
       .then(server.utils.empty)
       .then(res.commit)
       .catch(res.error)
+
+    function checkBelonging(team) {
+      Team.findById(team._id).then((teams) => {
+        for (let user in team.users) {
+          User.findById(user).then((data) => {
+            if (data._id == req.user.id) {
+              Role.findById(user.role).then((data) => {
+                if (data.name == "owner") {
+                  return team;
+                } else {
+                  server.utils.reject(401, 'not.enough.rights');
+                }
+              });
+            }
+          });
+        }  
+      });
+    }  
 
     function removeTeam(team) {
       Team.findByIdAndRemove(team._id)

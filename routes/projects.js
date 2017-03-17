@@ -20,6 +20,7 @@ module.exports = (server) => {
 
     router.get('/',
       server.middlewares.ensureAuthenticated,
+      server.middlewares.ensureRights("projects.list"),
       server.actions.projects.list
     );
 
@@ -34,7 +35,9 @@ module.exports = (server) => {
     //
     router.delete('/:id',
         server.middlewares.ensureAuthenticated,
-        server.actions.projects.remove);
+        server.middlewares.ensureRights("projects.remove"),
+        server.actions.projects.remove
+    );
 
     // router.put('/:id/assign/:assignedId',
     //     server.middlewares.ensureAuthenticated,
