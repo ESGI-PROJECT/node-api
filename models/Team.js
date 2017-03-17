@@ -3,17 +3,16 @@ const timestamps = require('mongoose-timestamps');
 module.exports = (server) => {
   const Schema = server.mongoose.Schema;
   const TeamSchema = new Schema({
-    name: {
-      type: String,
-      required: true,
-      unique: true
-    },
     users: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User'
       }
-    ]
+    ],
+    project: {
+      type: Schema.Types.ObjectId,
+      ref: 'Project',
+    }
   });
 
   TeamSchema.plugin(timestamps);
