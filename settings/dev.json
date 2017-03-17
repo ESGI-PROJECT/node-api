@@ -2,7 +2,7 @@
     "port": 3000,
     "db": {
         "mongo": {
-            "url": "mongodb://localhost:27017/todolist"
+            "url": "mongodb://localhost:27017/Tasklist"
         }
     },
     "security": {
@@ -20,10 +20,10 @@
             }
         ],
         "actions": {
-            "todos.create": 2,
-            "todos.remove": 2,
-            "todos.update": 2,
-            "todos.assign": 1
+            "Tasks.create": 2,
+            "Tasks.remove": 2,
+            "Tasks.update": 2,
+            "Tasks.assign": 1
         }
     }
 }

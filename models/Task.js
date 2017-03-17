@@ -3,9 +3,9 @@ const timestamps = require('mongoose-timestamps');
 module.exports = (server) => {
     const Schema = server.mongoose.Schema;
 
-    const TodoSchema = new Schema({
+    const TaskSchema = new Schema({
         title: String,
-        dueDate: Date,
+        description: String,
 
         creator: {
             type: Schema.Types.ObjectId,
@@ -14,11 +14,11 @@ module.exports = (server) => {
 
         assigned: {
             type: Schema.Types.ObjectId,
-            ref: 'User'
-        }
+            ref: 'Project'
+        },
     });
 
-    TodoSchema.plugin(timestamps);
+    TaskSchema.plugin(timestamps);
 
-    return server.mongoose.model('Todo', TodoSchema);
+    return server.mongoose.model('Task', TaskSchema);
 };

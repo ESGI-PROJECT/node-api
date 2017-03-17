@@ -6,7 +6,7 @@ module.exports = (server) => {
     server.mongoose.Promise = bluebird;
     server.models = {
         User: require('./User')(server),
-        Todo: require('./Todo')(server),
+        Task: require('./Task')(server),
         Role: require('./Role')(server)
         Role: require('./Team')(server)
     }
