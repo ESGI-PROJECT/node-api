@@ -2,7 +2,7 @@
     "port": 3000,
     "db": {
         "mongo": {
-            "url": "mongodb://localhost:27017/Tasklist"
+            "url": "mongodb://localhost:27017/grello"
         }
     },
     "security": {
@@ -11,19 +11,47 @@
     "acl": {
         "roles": [
             {
-                "name": "admin",
+                "name": "owner",
                 "level": 1
             },
             {
-                "name": "lambda",
+                "name": "admin",
                 "level": 2
+            },
+            {
+                "name": "member",
+                "level": 3
             }
         ],
         "actions": {
-            "Tasks.create": 2,
-            "Tasks.remove": 2,
-            "Tasks.update": 2,
-            "Tasks.assign": 1
+            "projects.create" : {
+                "level": 3,
+                "belongs": false 
+            },
+            "projects.list" : {
+                "level": 3,
+                "belongs": false 
+            },
+            "task.list" : {
+                "level": 3,
+                "belongs": true 
+            },
+            "teams.update" : {
+                "level": 1,
+                "belongs": true
+            },
+            "teams.add" : {
+                "level": 1,
+                "belongs": true 
+            },
+            "teams.remove" : {
+                "level": 1,
+                "belongs": true 
+            },
+            "teams.unsubscribe" : {
+                "level": 3,
+                "belongs": true 
+            } 
         }
     }
 }
